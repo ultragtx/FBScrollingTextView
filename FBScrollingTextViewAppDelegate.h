@@ -8,11 +8,11 @@
 #import <Cocoa/Cocoa.h>
 #import "FBScrollingTextView.h"
 @interface FBScrollingTextViewAppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
+    NSWindow *__weak window;
 	FBScrollingTextView *tView;
 	NSStatusItem *statusItem;
 }
 
-@property (assign) IBOutlet NSWindow *window;
-@property (retain) FBScrollingTextView *tView;
+@property (weak) IBOutlet NSWindow *window;
+@property (strong) FBScrollingTextView *tView;
 @end

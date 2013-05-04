@@ -26,7 +26,6 @@
 	if (!tickTockScroll) {		
 		tickTockScroll = [NSTimer scheduledTimerWithTimeInterval:refreshRate/scrollingSpeed target:self selector:@selector(scrollText) userInfo:nil repeats:YES];
 	}
-	[tickTockStartScrolling release];
 	tickTockStartScrolling = nil;
 }
 
@@ -55,18 +54,15 @@
 - (void)setString:(NSString *)_string {
 	if (tickTockScroll) {
 		[tickTockScroll invalidate];
-		[tickTockScroll release];
 		tickTockScroll = nil;
 	}
 	if (tickTockStartScrolling) {
 		[tickTockStartScrolling invalidate];
-		[tickTockStartScrolling release];
 		tickTockStartScrolling = nil;
 	}
 	
 	cursor = NSMakePoint(0, 0);
-	[string release];
-	string = [_string retain];
+	string = _string;
 	CGRect thisFrame = [super frame];
 	if ([self stringWidth] > thisFrame.size.width) {
 		if (!tickTockStartScrolling) {
@@ -102,14 +98,9 @@
 
 - (void)dealloc {
 	[tickTockScroll invalidate];
-	[tickTockScroll release];
 	tickTockScroll = nil;
 	[tickTockStartScrolling invalidate];
-	[tickTockStartScrolling release];
 	tickTockStartScrolling = nil;
-	self.string = nil;
-	self.font = nil;	
-    [super dealloc];
 }
 
 

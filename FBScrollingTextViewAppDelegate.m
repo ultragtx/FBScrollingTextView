@@ -19,16 +19,11 @@
 	
 	
 	
-	statusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
+	statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 	[statusItem setView:self.tView];
 	
 }
 
-- (void) dealloc
-{
-	self.tView = nil;
-	[super dealloc];
-}
 
 
 @end
